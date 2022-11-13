@@ -20,17 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewQuestion;
     private TextView textViewTimer;
     private TextView textViewScore;
-    private TextView textViewOpinion0;
-    private TextView textViewOpinion1;
-    private TextView textViewOpinion2;
-    private TextView textViewOpinion3;
-    private ArrayList<TextView> options = new ArrayList<>();
+    private final ArrayList<TextView> options = new ArrayList<>();
 
     private String question;
     private int rightAnswer;
     private int rightAnswerPosition;
-    private int min = 10;
-    private int max = 100;
+    private final int max = 100;
     private int countOfQuestions = 0;
     private int countOfRightAnswers = 0;
     private int countOfWrongAnswer = 0;
@@ -43,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         textViewQuestion = findViewById(R.id.textViewQuestion);
         textViewTimer = findViewById(R.id.textViewTimer);
         textViewScore = findViewById(R.id.textViewScore);
-        textViewOpinion0 = findViewById(R.id.textViewOpinion0);
-        textViewOpinion1 = findViewById(R.id.textViewOpinion1);
-        textViewOpinion2 = findViewById(R.id.textViewOpinion2);
-        textViewOpinion3 = findViewById(R.id.textViewOpinion3);
+        TextView textViewOpinion0 = findViewById(R.id.textViewOpinion0);
+        TextView textViewOpinion1 = findViewById(R.id.textViewOpinion1);
+        TextView textViewOpinion2 = findViewById(R.id.textViewOpinion2);
+        TextView textViewOpinion3 = findViewById(R.id.textViewOpinion3);
         options.add(textViewOpinion0);
         options.add(textViewOpinion1);
         options.add(textViewOpinion2);
@@ -67,9 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 int max = preferences.getInt("max", 0);
                 if (countOfRightAnswers >= max) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
-                        preferences.edit().putInt("max", countOfRightAnswers).apply();
-                    }
+                    preferences.edit().putInt("max", countOfRightAnswers).apply();
                 }
                 Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
                 intent.putExtra("result", countOfRightAnswers);
@@ -97,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         int a;
         int b;
         int mark = (int) (Math.random() * 4);
+        int min = 10;
         switch (mark) {
             case 0:
                 a = (int) (Math.random() * (max + 1));
