@@ -137,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
             int chosenAnswer = Integer.parseInt(answer);
             if (chosenAnswer == rightAnswer) {
                 countOfRightAnswers++;
-                Toast.makeText(this, "Молодец!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Молодец!", Toast.LENGTH_SHORT).show();
             } else {
                 countOfWrongAnswer++;
-                Toast.makeText(this, "Ошибка!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Ошибка!", Toast.LENGTH_SHORT).show();
             }
             countOfQuestions++;
             playNext();
